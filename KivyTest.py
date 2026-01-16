@@ -57,12 +57,12 @@ class MyBoxLayout(BoxLayout):
         return True
     
     def on_touch_move(self, touch):
-        pass
-    
-    def on_touch_up(self, touch):
         if self.dragging:
             Window.left = Window.left + touch.x - self.drag_start[0]
             Window.top = Window.top - touch.y + self.drag_start[1]
+        return False
+    
+    def on_touch_up(self, touch):
         self.drag_start = None
         self.dragging = False
         return False
