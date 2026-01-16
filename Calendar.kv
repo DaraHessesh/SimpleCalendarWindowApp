@@ -1,0 +1,90 @@
+
+
+# Main Build Frame
+<MyBoxLayout>:
+
+    orientation: 'vertical'
+    canvas.before: 
+        Color:
+            rgba: (1, 1, 1, 1)
+        Rectangle:
+            source: 'textures/WoodenBorder.png'
+            size: (220, 268)
+            pos: (0, 0)
+
+    # Toolbar
+    BoxLayout:
+        orientation: 'horizontal'
+        size_hint_y: None
+        height: 48
+
+        Label:
+            id: headerLabel
+            padding: [36, 10, 0, 0]
+            text: "calendar"
+            font_size: 20
+            text_size: self.size
+            halign: 'center'
+            valign: 'top'
+
+            canvas.before:
+                Color:
+                    rgba: (1, 1, 1, 1)
+                RoundedRectangle:
+                    source: 'textures/CalendarLabel.png'
+                    size: (110, 36)
+                    pos: (52, 226)
+                    radius: [10,]
+
+        Button:
+            id: customCloseButton
+            size_hint: (None, None)
+            size: (36, 36)
+            pos_hint: {'top': 1}
+            on_press: app.stop()
+    
+            # Делаем стандартный фон невидимым
+            background_normal: ''
+            background_down: ''
+            background_color: 0, 0, 0, 0
+
+            canvas.before:
+                Rectangle:
+                    source: 'textures/Close.png'
+                    size: (self.size)
+                    pos: (self.pos)
+            
+
+    # Main Calendar Zone
+    Label:
+        size_hint_y: None
+        height: 70
+        padding: [0, 20, 0, 0]
+        id: dateLabel
+        text: "11"
+        font_name: "victorian-gothic-one3.ttf"
+        font_size: 128
+
+        canvas.before:
+            Color:
+                rgba: (0.90196, 0.72157, 0.54118, 1) 
+            RoundedRectangle:
+                size: (130, 105)
+                pos: (42, 115)
+                radius: [20,]
+
+    Label:
+        id: monthLabel
+        text: "month"
+        font_name: "victorian-gothic-one3.ttf"
+        font_size: 64
+
+        canvas.before:
+            Color:
+                rgba: (0.90196, 0.72157, 0.54118, 1) 
+            RoundedRectangle:
+                size: (150, 64)
+                pos: (34,40)
+                radius: [20,]
+
+    # Possibly credits?
